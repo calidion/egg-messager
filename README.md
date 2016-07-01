@@ -16,7 +16,7 @@ var messager = require('egg-messager');
 
 // 发送邮件
 var config = {
-  host: process.env.NN_MAIL_SERVER || 'smtp.126.com,
+  host: process.env.NN_MAIL_SERVER || 'smtp.126.com',
   port: process.env.NN_MAIL_PORT  || 465,
   secure: 'true',
   password: process.env.NN_MAIL_PASSWORD,
