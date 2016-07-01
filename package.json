@@ -40,7 +40,7 @@
       "mocha": true
     }
   },
-  "repository": "/server-notifier",
+  "repository": "calidion/egg-messager",
   "scripts": {
     "prepublish": "gulp prepublish",
     "test": "gulp"

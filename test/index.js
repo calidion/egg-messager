@@ -1,16 +1,16 @@
 import assert from 'assert';
-import serverNotifier from '../lib';
+import messager from '../lib';
 
 var emailConfig = require('./config/mail');
 var smsConfig = require('./config/sms');
 
 var path = require('path');
 
-describe('server-notifier', function () {
+describe('egg-messager', function () {
   it('should fail to send sms!', function () {
     var catched = false;
     try {
-      serverNotifier({}, {}, function (error) {
+      messager({}, {}, function (error) {
         assert(!error);
       });
     } catch (e) {
@@ -30,14 +30,14 @@ describe('server-notifier', function () {
       template: 'email.html'
     };
     it('should be able to send emails!', function (done) {
-      serverNotifier(emailConfig, options, function (error) {
+      messager(emailConfig, options, function (error) {
         assert(!error);
         done();
       });
     });
 
     it('should fail to send emails!', function (done) {
-      serverNotifier({}, options, function (error) {
+      messager({}, options, function (error) {
         assert(error);
         done();
       });
@@ -45,7 +45,7 @@ describe('server-notifier', function () {
 
     it('should be able to send emails!', function (done) {
       process.env.NOTIFIER_BYPASS = 1;
-      serverNotifier(emailConfig, options, function (error) {
+      messager(emailConfig, options, function (error) {
         assert(!error);
         done();
       });
@@ -53,7 +53,7 @@ describe('server-notifier', function () {
 
     it('should be able to send emails!', function (done) {
       options.toUser = 'sdfsfdf';
-      serverNotifier(emailConfig, options, function (error) {
+      messager(emailConfig, options, function (error) {
         assert(error);
         done();
       });
@@ -70,7 +70,7 @@ describe('server-notifier', function () {
       id: 22340
     };
     it('should be able to send sms!', function (done) {
-      serverNotifier(smsConfig, options, function (error) {
+      messager(smsConfig, options, function (error) {
         assert(!error);
         done();
       });
@@ -78,7 +78,7 @@ describe('server-notifier', function () {
 
     it('should be able to send sms!', function (done) {
       process.env.NOTIFIER_BYPASS = 0;
-      serverNotifier(smsConfig, options, function (error) {
+      messager(smsConfig, options, function (error) {
         assert(!error);
         done();
       });
@@ -87,7 +87,7 @@ describe('server-notifier', function () {
     it('should be able to send sms!', function (done) {
       process.env.NOTIFIER_BYPASS = 0;
       options.toUser = 'sdfs9s';
-      serverNotifier(smsConfig, options, function (error) {
+      messager(smsConfig, options, function (error) {
         assert(error);
         done();
       });
@@ -96,7 +96,7 @@ describe('server-notifier', function () {
     it('should be able to send sms!', function (done) {
       process.env.NOTIFIER_BYPASS = 1;
       options.toUser = 'sdfs9s';
-      serverNotifier({}, options, function (error) {
+      messager({}, options, function (error) {
         assert(error);
         done();
       });
