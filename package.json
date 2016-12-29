@@ -1,6 +1,6 @@
 {
   "name": "egg-messager",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "messager for egg framework",
   "homepage": "",
   "author": {
@@ -47,6 +47,6 @@
   },
   "dependencies": {
     "ejs": "^2.4.2",
-    "node-notification": "^0.1.2"
+    "node-notification": "^0.2.0"
   }
 }
